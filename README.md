@@ -65,7 +65,7 @@ class App extends React.Component {
   }
 }
 ```
-will render (with bootstrap):
+will render (with bootstrap installed):
 
 ![input_render](https://raw.github.com/croudcare/relpers/master/readme/input/render.png)
 
@@ -102,7 +102,7 @@ Repeater
 ```javascript
 import { Repeater } from 'relpers';
 
-const ChildComponent ({ item, itemSelected }) => (
+const ChildComponent ({ item }) => (
   <div className="list-group-item">
     <span className="badge">{ item.id }</span>{ item.name }
   </div>
@@ -120,7 +120,7 @@ class App extends React.Component {
   }
 }
 ```
-will render (with bootstrap):
+will render (with bootstrap installed):
 
 ![repeater_render](https://raw.github.com/croudcare/relpers/master/readme/repeater/render.png)
 
