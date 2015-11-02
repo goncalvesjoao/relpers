@@ -1,33 +1,29 @@
 import React from 'react';
 import Spinner from './Spinner';
+import killEvent from './killEvent';
+import injectProps from './injectProps';
 import ServiceStatus from './ServiceStatus';
 
 class Form extends React.Component {
 
-  renderChildren() {
-    if (this.props.data.loading) { return <Spinner />; }
-
-    const props = {
-      data: this.props.data,
-      onChange: this.props.onChange,
-    };
+  renderChildren(data, onChange) {
+    if (data.loading) { return <Spinner />; }
 
     return React.Children.map(this.props.children, (child) => {
-      return React.cloneElement(child, props);
+      return React.cloneElement(child, { data, onChange });
     });
   }
 
-  onSubmit(event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
+  @killEvent
+  onSubmit(callback) { callback(); }
 
-  render() {
+  @injectProps
+  render({ data, onChange, onSubmit }) {
     return (
-      <form onSubmit={ this.onSubmit.bind(this) }>
-        { this.renderChildren() }
+      <form onSubmit={ this.onSubmit.bind(this, onSubmit) }>
+        { this.renderChildren(data, onChange) }
         <ServiceStatus
-          error={ this.props.data.error }
+          error={ data.error }
           className="label label-danger"
           errorComponent="span"
         />

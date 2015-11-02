@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
@@ -22,6 +22,14 @@ var _Spinner = require('./Spinner');
 
 var _Spinner2 = _interopRequireDefault(_Spinner);
 
+var _killEvent = require('./killEvent');
+
+var _killEvent2 = _interopRequireDefault(_killEvent);
+
+var _injectProps = require('./injectProps');
+
+var _injectProps2 = _interopRequireDefault(_injectProps);
+
 var _ServiceStatus = require('./ServiceStatus');
 
 var _ServiceStatus2 = _interopRequireDefault(_ServiceStatus);
@@ -35,37 +43,37 @@ var Form = (function (_React$Component) {
     _get(Object.getPrototypeOf(Form.prototype), 'constructor', this).apply(this, arguments);
   }
 
-  _createClass(Form, [{
+  _createDecoratedClass(Form, [{
     key: 'renderChildren',
-    value: function renderChildren() {
-      if (this.props.data.loading) {
+    value: function renderChildren(data, onChange) {
+      if (data.loading) {
         return _react2['default'].createElement(_Spinner2['default'], null);
       }
 
-      var props = {
-        data: this.props.data,
-        onChange: this.props.onChange
-      };
-
       return _react2['default'].Children.map(this.props.children, function (child) {
-        return _react2['default'].cloneElement(child, props);
+        return _react2['default'].cloneElement(child, { data: data, onChange: onChange });
       });
     }
   }, {
     key: 'onSubmit',
-    value: function onSubmit(event) {
-      event.stopPropagation();
-      event.preventDefault();
+    decorators: [_killEvent2['default']],
+    value: function onSubmit(callback) {
+      callback();
     }
   }, {
     key: 'render',
-    value: function render() {
+    decorators: [_injectProps2['default']],
+    value: function render(_ref) {
+      var data = _ref.data;
+      var onChange = _ref.onChange;
+      var onSubmit = _ref.onSubmit;
+
       return _react2['default'].createElement(
         'form',
-        { onSubmit: this.onSubmit.bind(this) },
-        this.renderChildren(),
+        { onSubmit: this.onSubmit.bind(this, onSubmit) },
+        this.renderChildren(data, onChange),
         _react2['default'].createElement(_ServiceStatus2['default'], {
-          error: this.props.data.error,
+          error: data.error,
           className: 'label label-danger',
           errorComponent: 'span'
         })

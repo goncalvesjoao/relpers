@@ -76,11 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-<<<<<<< HEAD
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "1446501384319-chunk.js";
-=======
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "1446499658365-chunk.js";
->>>>>>> d10f125... injectProps working with methods that receive arguments
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "1446508470297-chunk.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};

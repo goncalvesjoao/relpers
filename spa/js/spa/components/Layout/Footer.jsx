@@ -9,9 +9,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className="container">
-        <center>
-          All copyrights reserved &copy; <b>{ author }</b> { (new Date()).getFullYear() }
-        </center>
+        <center>&copy; <b>{ author }</b> { (new Date()).getFullYear() }</center>
         <p>&nbsp;</p>
       </footer>
     );

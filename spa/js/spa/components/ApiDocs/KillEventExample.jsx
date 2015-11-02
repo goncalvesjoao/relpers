@@ -46,11 +46,7 @@ const killEventExample = React.createClass({
         <section>
           <div className='panel panel-default'>
             <div className='panel-heading'>
-<<<<<<< HEAD
               <h3 className='panel-title'>Add it right before the method you want to stop and prevent its event</h3>
-=======
-              <h3 className='panel-title'>Add it right before the method you want to inject your props into</h3>
->>>>>>> d10f125... injectProps working with methods that receive arguments
             </div>
 
             <div className='panel-body'>

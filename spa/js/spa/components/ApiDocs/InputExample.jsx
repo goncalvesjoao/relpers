@@ -118,6 +118,39 @@ const InputExample = React.createClass({
         <section>
           <div className='panel panel-default'>
             <div className='panel-heading clearfix'>
+              <h3 className='panel-title'>No label</h3>
+            </div>
+
+            <div className='panel-body'>
+              <Input data={ this.state.user } field="firstName" label={ false } />
+            </div>
+
+            <div className='panel-footer'>
+              <span className="label label-default">Code:</span>
+              <Prism className='language-jsx'>
+                {
+                  `const App = React.createClass({
+  getInitialState() { return { user: { id: 1, firstName: 'John', lastName: 'Snow' } }; },
+
+  onChange(user) { this.setState({ user }); },
+
+  render() {
+    return (
+      <div>
+        <Input data={ this.state.user } field="firstName" label={ false } />
+      </div>
+    );
+  },
+});`
+                }
+              </Prism>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className='panel panel-default'>
+            <div className='panel-heading clearfix'>
               <h3 className='panel-title'>Data has a field with errors</h3>
             </div>
 

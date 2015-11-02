@@ -15,7 +15,7 @@ webpackJsonp([0],{
 
 	var _Form2 = _interopRequireDefault(_Form);
 
-	var _Input = __webpack_require__(160);
+	var _Input = __webpack_require__(162);
 
 	var _Input2 = _interopRequireDefault(_Input);
 
@@ -23,19 +23,19 @@ webpackJsonp([0],{
 
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 
-	var _Repeater = __webpack_require__(161);
+	var _Repeater = __webpack_require__(163);
 
 	var _Repeater2 = _interopRequireDefault(_Repeater);
 
-	var _killEvent = __webpack_require__(162);
+	var _killEvent = __webpack_require__(159);
 
 	var _killEvent2 = _interopRequireDefault(_killEvent);
 
-	var _injectProps = __webpack_require__(163);
+	var _injectProps = __webpack_require__(160);
 
 	var _injectProps2 = _interopRequireDefault(_injectProps);
 
-	var _ServiceStatus = __webpack_require__(159);
+	var _ServiceStatus = __webpack_require__(161);
 
 	var _ServiceStatus2 = _interopRequireDefault(_ServiceStatus);
 
@@ -63,7 +63,7 @@ webpackJsonp([0],{
 	  value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
@@ -81,7 +81,15 @@ webpackJsonp([0],{
 
 	var _Spinner2 = _interopRequireDefault(_Spinner);
 
-	var _ServiceStatus = __webpack_require__(159);
+	var _killEvent = __webpack_require__(159);
+
+	var _killEvent2 = _interopRequireDefault(_killEvent);
+
+	var _injectProps = __webpack_require__(160);
+
+	var _injectProps2 = _interopRequireDefault(_injectProps);
+
+	var _ServiceStatus = __webpack_require__(161);
 
 	var _ServiceStatus2 = _interopRequireDefault(_ServiceStatus);
 
@@ -94,37 +102,37 @@ webpackJsonp([0],{
 	    _get(Object.getPrototypeOf(Form.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createClass(Form, [{
+	  _createDecoratedClass(Form, [{
 	    key: 'renderChildren',
-	    value: function renderChildren() {
-	      if (this.props.data.loading) {
+	    value: function renderChildren(data, onChange) {
+	      if (data.loading) {
 	        return _react2['default'].createElement(_Spinner2['default'], null);
 	      }
 
-	      var props = {
-	        data: this.props.data,
-	        onChange: this.props.onChange
-	      };
-
 	      return _react2['default'].Children.map(this.props.children, function (child) {
-	        return _react2['default'].cloneElement(child, props);
+	        return _react2['default'].cloneElement(child, { data: data, onChange: onChange });
 	      });
 	    }
 	  }, {
 	    key: 'onSubmit',
-	    value: function onSubmit(event) {
-	      event.stopPropagation();
-	      event.preventDefault();
+	    decorators: [_killEvent2['default']],
+	    value: function onSubmit(callback) {
+	      callback();
 	    }
 	  }, {
 	    key: 'render',
-	    value: function render() {
+	    decorators: [_injectProps2['default']],
+	    value: function render(_ref) {
+	      var data = _ref.data;
+	      var onChange = _ref.onChange;
+	      var onSubmit = _ref.onSubmit;
+
 	      return _react2['default'].createElement(
 	        'form',
-	        { onSubmit: this.onSubmit.bind(this) },
-	        this.renderChildren(),
+	        { onSubmit: this.onSubmit.bind(this, onSubmit) },
+	        this.renderChildren(data, onChange),
 	        _react2['default'].createElement(_ServiceStatus2['default'], {
-	          error: this.props.data.error,
+	          error: data.error,
 	          className: 'label label-danger',
 	          errorComponent: 'span'
 	        })
@@ -192,6 +200,69 @@ webpackJsonp([0],{
 /***/ },
 
 /***/ 159:
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	function killEvent(target, name, descriptor) {
+	  var oldHandler = target;
+
+	  function eventCanceler() {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    args[0].stopPropagation();
+	    args[0].preventDefault();
+
+	    oldHandler.apply(this, args);
+	  }
+
+	  if (typeof target === 'function') {
+	    return eventCanceler;
+	  }
+
+	  oldHandler = descriptor.value;
+	  descriptor.value = eventCanceler;
+	  return descriptor;
+	}
+
+	exports['default'] = killEvent;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 160:
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	function injectProps(target, name, descriptor) {
+	  var oldFunction = descriptor.value;
+
+	  descriptor.value = function propsInjectorFunction() {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return oldFunction.bind(this).apply(undefined, args.concat([this.props]));
+	  };
+
+	  return descriptor;
+	}
+
+	exports["default"] = injectProps;
+	module.exports = exports["default"];
+
+/***/ },
+
+/***/ 161:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -290,7 +361,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 160:
+/***/ 162:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -409,7 +480,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 161:
+/***/ 163:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -434,7 +505,7 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ServiceStatus = __webpack_require__(159);
+	var _ServiceStatus = __webpack_require__(161);
 
 	var _ServiceStatus2 = _interopRequireDefault(_ServiceStatus);
 
@@ -506,69 +577,6 @@ webpackJsonp([0],{
 
 	exports['default'] = Repeater;
 	module.exports = exports['default'];
-
-/***/ },
-
-/***/ 162:
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	function killEvent(target, name, descriptor) {
-	  var oldHandler = target;
-
-	  function eventCanceler() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    args[0].stopPropagation();
-	    args[0].preventDefault();
-
-	    oldHandler.apply(this, args);
-	  }
-
-	  if (typeof target === 'function') {
-	    return eventCanceler;
-	  }
-
-	  oldHandler = descriptor.value;
-	  descriptor.value = eventCanceler;
-	  return descriptor;
-	}
-
-	exports['default'] = killEvent;
-	module.exports = exports['default'];
-
-/***/ },
-
-/***/ 163:
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	function injectProps(target, name, descriptor) {
-	  var oldFunction = descriptor.value;
-
-	  descriptor.value = function propsInjectorFunction() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-
-	    return oldFunction.bind(this).apply(undefined, args.concat([this.props]));
-	  };
-
-	  return descriptor;
-	}
-
-	exports["default"] = injectProps;
-	module.exports = exports["default"];
 
 /***/ }
 
