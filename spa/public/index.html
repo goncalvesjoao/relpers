@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ name }}</title>
+    <base href="{{ baseHref }}"></base>
+    <meta name="author" content="{{ author }}">
+    <meta name="description" content="{{ description }}">
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/react_css_modules/index.css">
+    <link rel="stylesheet" href="css/react_css_modules/vendor.css">
+
+    <script type="text/javascript">
+      window.appConfig = JSON.parse('{{{ appConfig }}}');
+    </script>
+    <script type="text/javascript" src="js/vendor/prism.js"></script>
+    <script type="text/javascript" src="js/vendor/index.js"></script>
+  </head>
+
+  <body>
+    <div id="spa"></div>
+
+    <script type="text/javascript" src="js/index.js"></script>
+  </body>
+</html>

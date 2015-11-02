@@ -1,0 +1,3 @@
+--require test/support/mocha.js
+--compilers js:test/support/babel-hook.js,css:test/support/css-modules-hook.js
+--reporter nyan
