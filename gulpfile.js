@@ -99,7 +99,7 @@ function webpackBasicConfig() {
 function enableVendorIfNeeded(config) {
   if (!bundleDependenciesSeparately) { return false; }
 
-  config.entry.vendor = Object.keys(packageJson.dependencies);
+  config.entry.vendor = Object.keys(packageJson.dependencies || {});
 
   config.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'))
 }
