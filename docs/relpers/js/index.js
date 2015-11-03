@@ -257,6 +257,19 @@ webpackJsonp([1],{
 	      return this.httpStatus === '409' || this.httpStatus === '422';
 	    }
 	  }, {
+	    key: 'renderChildren',
+	    value: function renderChildren(children) {
+	      if (!children) {
+	        return _react2['default'].createElement('noscript');
+	      }
+
+	      if (children.length) {
+	        return _react2['default'].createElement('div', null, children);
+	      }
+
+	      return children;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -269,7 +282,7 @@ webpackJsonp([1],{
 	      }
 
 	      if (this.noRealError()) {
-	        return children || null;
+	        return this.renderChildren(children);
 	      }
 
 	      return _react2['default'].createElement(errorComponent, null, this.message());
@@ -2152,9 +2165,14 @@ webpackJsonp([1],{
 	              _src.ServiceStatus,
 	              null,
 	              _react2['default'].createElement(
-	                'span',
+	                'p',
 	                null,
-	                'Hello world'
+	                'Hello'
+	              ),
+	              _react2['default'].createElement(
+	                'p',
+	                null,
+	                'world'
 	              )
 	            ),
 	            '!'
@@ -2170,7 +2188,7 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
-	              'class App extends React.Component {\n  render() {\n    return (\n      <div>\n        <span>!<ServiceStatus />!</span>\n        <span>!<ServiceStatus><span>Hello world</span></ServiceStatus>!</span>\n      </div>\n    );\n  }\n}'
+	              'class App extends React.Component {\n  render() {\n    return (\n      <div>\n        !<ServiceStatus />!\n        <br/>\n        !<ServiceStatus>\n          <p>Hello</p>\n          <p>world</p>\n        </ServiceStatus>!\n      </div>\n    );\n  }\n}'
 	            )
 	          )
 	        )

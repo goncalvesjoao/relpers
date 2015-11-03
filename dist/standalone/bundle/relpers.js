@@ -332,6 +332,19 @@ webpackJsonp([0],{
 	      return this.httpStatus === '409' || this.httpStatus === '422';
 	    }
 	  }, {
+	    key: 'renderChildren',
+	    value: function renderChildren(children) {
+	      if (!children) {
+	        return _react2['default'].createElement('noscript');
+	      }
+
+	      if (children.length) {
+	        return _react2['default'].createElement('div', null, children);
+	      }
+
+	      return children;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
@@ -344,7 +357,7 @@ webpackJsonp([0],{
 	      }
 
 	      if (this.noRealError()) {
-	        return children || null;
+	        return this.renderChildren(children);
 	      }
 
 	      return _react2['default'].createElement(errorComponent, null, this.message());
