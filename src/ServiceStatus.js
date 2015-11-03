@@ -31,9 +31,9 @@ class ServiceStatus extends React.Component {
   render() {
     const { status, children, errorComponent } = this.props;
 
-    if (status.loading) { return <this.props.spinner />; }
+    if (status.loading) { return React.createElement(this.props.spinner, null); }
 
-    if (this.noRealError()) { return children || null; }
+    if (this.noRealError()) { return React.createElement('div', null, (children || null)); }
 
     return React.createElement(errorComponent, null, this.message());
   }
