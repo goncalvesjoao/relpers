@@ -33,7 +33,10 @@ const ServiceStatusExample = React.createClass({
             <div className='panel-body'>
               !<ServiceStatus />!
               <br/>
-              !<ServiceStatus><span>Hello world</span></ServiceStatus>!
+              !<ServiceStatus>
+                <p>Hello</p>
+                <p>world</p>
+              </ServiceStatus>!
             </div>
 
             <div className='panel-footer'>
@@ -44,8 +47,12 @@ const ServiceStatusExample = React.createClass({
   render() {
     return (
       <div>
-        <span>!<ServiceStatus />!</span>
-        <span>!<ServiceStatus><span>Hello world</span></ServiceStatus>!</span>
+        !<ServiceStatus />!
+        <br/>
+        !<ServiceStatus>
+          <p>Hello</p>
+          <p>world</p>
+        </ServiceStatus>!
       </div>
     );
   }

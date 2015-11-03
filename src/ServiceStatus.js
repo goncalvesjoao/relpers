@@ -28,12 +28,20 @@ class ServiceStatus extends React.Component {
     return (this.httpStatus === '409' || this.httpStatus === '422');
   }
 
+  renderChildren(children) {
+    if (!children) { return React.createElement('noscript'); }
+
+    if (children.length) { return React.createElement('div', null, children); }
+
+    return children;
+  }
+
   render() {
     const { status, children, errorComponent } = this.props;
 
     if (status.loading) { return React.createElement(this.props.spinner, null); }
 
-    if (this.noRealError()) { return React.createElement('div', null, (children || null)); }
+    if (this.noRealError()) { return this.renderChildren(children); }
 
     return React.createElement(errorComponent, null, this.message());
   }
