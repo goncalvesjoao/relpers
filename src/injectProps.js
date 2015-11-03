@@ -1,8 +1,8 @@
 function injectProps(target, name, descriptor) {
   const oldFunction = descriptor.value;
 
-  descriptor.value = function propsInjectorFunction(...args) {
-    return oldFunction.bind(this)(...args, this.props);
+  descriptor.value = function propsInjectorFunction() {
+    return oldFunction.bind(this)(this.props);
   };
 
   return descriptor;
