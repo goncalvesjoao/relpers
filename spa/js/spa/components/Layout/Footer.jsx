@@ -1,16 +1,11 @@
 import React from 'react';
-import { config } from '../../../../../src';
-
-let author = '<package.json:author>';
-
-if (config.author) { author = config.author; }
 
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="container">
-        <center>&copy; <b>{ author }</b> { (new Date()).getFullYear() }</center>
+      <footer className="container text-center">
         <p>&nbsp;</p>
+        <p>This package and this documentation page <br/> where made with the help of <a target="_blank">react-to-commonjs</a>.</p>
       </footer>
     );
   }

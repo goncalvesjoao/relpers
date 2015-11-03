@@ -12,6 +12,7 @@ function killEvent(target, name, descriptor) {
 
   oldHandler = descriptor.value;
   descriptor.value = eventCanceler;
+
   return descriptor;
 }
 

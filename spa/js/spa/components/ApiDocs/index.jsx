@@ -47,13 +47,8 @@ const ApiDocs = React.createClass({
         <li>
           <span>Relpers</span>
           <ul>
-            <LiLink to="/api_docs/form">Form</LiLink>
-            <LiLink to="/api_docs/input">Input</LiLink>
-            <LiLink to="/api_docs/spinner">Spinner</LiLink>
-            <LiLink to="/api_docs/repeater">Repeater</LiLink>
             <LiLink to="/api_docs/kill_event">killEvent</LiLink>
             <LiLink to="/api_docs/inject_props">injectProps</LiLink>
-            <LiLink to="/api_docs/service_status">ServiceStatus</LiLink>
           </ul>
         </li>
       </ul>

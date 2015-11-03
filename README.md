@@ -5,7 +5,7 @@ A group of small React Helpers to reduce your React boilerplate.
 $> npm install relpers --save
 ```
 
-Documentation: https://croudcare.github.io/relpers/
+Documentation: https://croudcare.github.io/relpers/v1.1/
 
 ---
 
@@ -40,92 +40,3 @@ class App extends React.Component {
   }
 }
 ```
-
-Input
-----
-```javascript
-import { Input } from 'relpers';
-
-class App extends React.Component {
-  render() {
-    const user = {
-      firstName: 'John',
-      lastName: 'Snow',
-      errors: {
-        firstName: ['is taken'],
-      },
-    };
-
-    return (
-      <div>
-        <Input data={ user } field="firstName" />
-        <Input data={ user } field="lastName" />
-      </div>
-    );
-  }
-}
-```
-will render (with bootstrap installed):
-
-![input_render](https://raw.github.com/croudcare/relpers/master/readme/input/render.png)
-
-![input_html](https://raw.github.com/croudcare/relpers/master/readme/input/html.png)
-
-Form
-----
-```javascript
-import { Form } from 'relpers';
-
-class App extends React.Component {
-  render() {
-    const user = {
-      firstName: 'John',
-      lastName: 'Snow',
-      errors: {
-        firstName: ['is taken'],
-      },
-    };
-
-    return (
-      <Form data={ user }>
-        <Input field="firstName" />
-        <Input field="lastName" />
-      </div>
-    );
-  }
-}
-```
-will render the same as the Input example above.
-
-Repeater
-----
-```javascript
-import { Repeater } from 'relpers';
-
-const ChildComponent ({ item }) => (
-  <div className="list-group-item">
-    <span className="badge">{ item.id }</span>{ item.name }
-  </div>
-);
-
-class App extends React.Component {
-  render() {
-    return (
-      <Repeater
-        data={ [{ id: 1, name: 'one' }, { id: 2, name: 'two' }] }
-        emptyComponent={ () => <p>no results here!</p> }
-        childComponent={ ({ object }) => <ChildComponent item={ object } /> }
-      />
-    );
-  }
-}
-```
-will render (with bootstrap installed):
-
-![repeater_render](https://raw.github.com/croudcare/relpers/master/readme/repeater/render.png)
-
----
-
-TODO
----
-- proper specs
