@@ -12,15 +12,15 @@
 
   "scripts": {
     "start": "npm run spa",
-    "spa": "rm -rdf ./spa/tmp && ./node_modules/.bin/gulp --gulpfile ./spa/gulpfile.js",
-    "build-docs": "rm -rdf ./docs && ./node_modules/.bin/gulp build --gulpfile ./spa/gulpfile.js",
+    "spa": "rm -rf ./spa/tmp && ./node_modules/.bin/gulp --gulpfile ./spa/gulpfile.js",
+    "build-docs": "rm -rf ./docs && ./node_modules/.bin/gulp build --gulpfile ./spa/gulpfile.js",
 
     "build": "npm run build-commonjs && ./node_modules/.bin/gulp build-standalone",
-    "build-commonjs": "rm -rdf ./dist/commonjs && ./node_modules/.bin/gulp build-commonjs",
-    "build-standalone": "rm -rdf ./dist/standalone && ./node_modules/.bin/gulp build-standalone",
+    "build-commonjs": "rm -rf ./dist/commonjs && ./node_modules/.bin/gulp build-commonjs",
+    "build-standalone": "rm -rf ./dist/standalone && ./node_modules/.bin/gulp build-standalone",
 
     "quick-test": "./node_modules/.bin/mocha ./test/**/*Spec.js",
-    "test": "rm -rdf ./coverage && node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha ./test/**/*Spec.js",
+    "test": "rm -rf ./coverage && node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha ./test/**/*Spec.js",
 
     "lint": "./node_modules/.bin/eslint ./src/"
   },
