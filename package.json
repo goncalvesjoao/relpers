@@ -1,6 +1,6 @@
 {
   "name": "relpers",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A group of small React Helpers to reduce your React boilerplate.",
   "author": "linkedcare",
   "repository": {
@@ -52,9 +52,5 @@
     "sinon-chai": "2.8.0",
     "babel-istanbul": "0.3.20",
     "react-addons-test-utils": "0.14.0"
-  },
-
-  "dependencies": {
-    "react": "0.14.0"
   }
 }
