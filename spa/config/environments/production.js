@@ -5,7 +5,7 @@ function productionConfig(config) {
   return _.assign({}, config, {
     environment: 'production',
 
-    baseHref: '/relpers/',
+    baseHref: '/relpers/v1.0/',
   });
 
 }

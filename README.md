@@ -5,7 +5,7 @@ A group of small React Helpers to reduce your React boilerplate.
 $> npm install relpers --save
 ```
 
-Documentation: https://croudcare.github.io/relpers/
+Documentation: https://croudcare.github.io/relpers/v1.0/
 
 ---
 
