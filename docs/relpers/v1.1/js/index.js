@@ -966,6 +966,8 @@ webpackJsonp([1],{
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -986,16 +988,16 @@ webpackJsonp([1],{
 
 	var _src = __webpack_require__(54);
 
-	var DownloadButton = (function (_React$Component) {
-	  _inherits(DownloadButton, _React$Component);
+	var DownloadButton1 = (function (_React$Component) {
+	  _inherits(DownloadButton1, _React$Component);
 
-	  function DownloadButton() {
-	    _classCallCheck(this, DownloadButton);
+	  function DownloadButton1() {
+	    _classCallCheck(this, DownloadButton1);
 
-	    _get(Object.getPrototypeOf(DownloadButton.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(DownloadButton1.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createDecoratedClass(DownloadButton, [{
+	  _createDecoratedClass(DownloadButton1, [{
 	    key: 'onDownloadClick',
 	    decorators: [_src.killEvent],
 	    value: function onDownloadClick() {
@@ -1012,19 +1014,19 @@ webpackJsonp([1],{
 	    }
 	  }]);
 
-	  return DownloadButton;
+	  return DownloadButton1;
 	})(_react2['default'].Component);
 
-	var App = (function (_React$Component2) {
-	  _inherits(App, _React$Component2);
+	var App1 = (function (_React$Component2) {
+	  _inherits(App1, _React$Component2);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	  function App1() {
+	    _classCallCheck(this, App1);
 
-	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(App1.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createDecoratedClass(App, [{
+	  _createDecoratedClass(App1, [{
 	    key: 'onDownloadClick',
 
 	    /*eslint-disable */
@@ -1051,12 +1053,70 @@ webpackJsonp([1],{
 	          null,
 	          'Notice that your browser\'s url is not being updated with a\'s href "#" in it.'
 	        ),
-	        _react2['default'].createElement(DownloadButton, { onDownloadClick: this.onDownloadClick })
+	        _react2['default'].createElement(DownloadButton1, { onDownloadClick: this.onDownloadClick })
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return App1;
+	})(_react2['default'].Component);
+
+	var DownloadButton2 = function DownloadButton2(_ref) {
+	  var onDownloadClick = _ref.onDownloadClick;
+	  return _react2['default'].createElement(
+	    'button',
+	    { onClick: (0, _src.killEvent)(function () {
+	        return onDownloadClick();
+	      }) },
+	    'click me'
+	  );
+	};
+
+	var App2 = (function (_React$Component3) {
+	  _inherits(App2, _React$Component3);
+
+	  function App2() {
+	    _classCallCheck(this, App2);
+
+	    _get(Object.getPrototypeOf(App2.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(App2, [{
+	    key: 'onDownloadClick',
+
+	    /*eslint-disable */
+	    value: function onDownloadClick() {
+	      alert('DownloadButton as been clicked!');
+	    }
+	  }, {
+	    key: 'onLinkClick',
+	    value: function onLinkClick() {
+	      alert('Link as been clicked!');
+	    }
+
+	    /*eslint-enable */
+
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+
+	      return _react2['default'].createElement(
+	        'a',
+	        { href: '#', onClick: (0, _src.killEvent)(function () {
+	            return _this.onLinkClick();
+	          }) },
+	        _react2['default'].createElement(
+	          'span',
+	          null,
+	          'Notice that your browser\'s url is not being updated with a\'s href "#" in it.'
+	        ),
+	        _react2['default'].createElement(DownloadButton2, { onDownloadClick: this.onDownloadClick })
+	      );
+	    }
+	  }]);
+
+	  return App2;
 	})(_react2['default'].Component);
 
 	var killEventExample = _react2['default'].createClass({
@@ -1094,7 +1154,7 @@ webpackJsonp([1],{
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            _react2['default'].createElement(App, null)
+	            _react2['default'].createElement(App1, null)
 	          ),
 	          _react2['default'].createElement(
 	            'div',
@@ -1108,6 +1168,42 @@ webpackJsonp([1],{
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
 	              'class DownloadButton extends React.Component {\n  @killEvent\n  onDownloadClick() { this.props.onDownloadClick(); }\n\n  render() {\n    return <button onClick={ this.onDownloadClick.bind(this) }>click me</button>;\n  }\n}\n\nclass App extends React.Component {\n  onDownloadClick() { alert(\'DownloadButton as been clicked!\'); }\n\n  @killEvent\n  onLinkClick() { alert(\'Link as been clicked!\'); }\n\n  render() {\n    return (\n      <a href="#" onClick={ this.onLinkClick }>\n        <span>Notice that your browser\'s URL is not being updated with "#" in it.</span>\n        <DownloadButton onDownloadClick={ this.onDownloadClick } />\n      </a>\n    );\n  }\n}'
+	            )
+	          )
+	        )
+	      ),
+	      _react2['default'].createElement(
+	        'section',
+	        null,
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'panel panel-default' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-heading' },
+	            _react2['default'].createElement(
+	              'h3',
+	              { className: 'panel-title' },
+	              'You can use it like a normall function too'
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-body' },
+	            _react2['default'].createElement(App2, null)
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-footer' },
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'label label-default' },
+	              'Code:'
+	            ),
+	            _react2['default'].createElement(
+	              _Prism2['default'],
+	              { className: 'language-jsx' },
+	              'const DownloadButton = ({ onDownloadClick }) => (\n  <button onClick={ killEvent(() => onDownloadClick()) }>click me</button>;\n);\n\nclass App extends React.Component {\n  onDownloadClick() { alert(\'DownloadButton as been clicked!\'); }\n\n  onLinkClick() { alert(\'Link as been clicked!\'); }\n\n  render() {\n    return (\n      <a href="#" onClick={ killEvent(() => this.onLinkClick()) }>\n        <span>Notice that your browser\'s URL is not being updated with "#" in it.</span>\n        <DownloadButton onDownloadClick={ this.onDownloadClick } />\n      </a>\n    );\n  }\n}'
 	            )
 	          )
 	        )
