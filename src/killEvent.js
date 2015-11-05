@@ -7,6 +7,10 @@ function killEvent(target, name, descriptor) {
     return target.apply(this, arguments);
   }
 
+  if (target === 'function') {
+    return eventCanceler;
+  }
+
   descriptor.value = eventCanceler;
 
   return descriptor;
