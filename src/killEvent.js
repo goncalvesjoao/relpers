@@ -1,16 +1,18 @@
 function killEvent(target, name, descriptor) {
+  let oldHandler = target;
 
   function eventCanceler(event) {
     event.stopPropagation();
     event.preventDefault();
 
-    return target.apply(this, arguments);
+    oldHandler.apply(this, arguments);
   }
 
-  if (target === 'function') {
+  if (typeof target === 'function') {
     return eventCanceler;
   }
 
+  oldHandler = descriptor.value;
   descriptor.value = eventCanceler;
 
   return descriptor;
