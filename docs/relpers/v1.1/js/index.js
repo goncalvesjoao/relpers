@@ -23,7 +23,7 @@ webpackJsonp([1],{
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactRouter = __webpack_require__(72);
+	var _reactRouter = __webpack_require__(71);
 
 	var _history = __webpack_require__(299);
 
@@ -158,7 +158,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 137:
+/***/ 138:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -166,7 +166,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 150:
+/***/ 151:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -181,9 +181,9 @@ webpackJsonp([1],{
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _ExecutionEnvironment = __webpack_require__(65);
+	var _ExecutionEnvironment = __webpack_require__(64);
 
-	var _DOMUtils = __webpack_require__(64);
+	var _DOMUtils = __webpack_require__(63);
 
 	var _deprecate = __webpack_require__(51);
 
@@ -283,7 +283,7 @@ webpackJsonp([1],{
 
 /***/ },
 
-/***/ 204:
+/***/ 205:
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -302,7 +302,7 @@ webpackJsonp([1],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRouter = __webpack_require__(72);
+	var _reactRouter = __webpack_require__(71);
 
 	var LiLink = _react2['default'].createClass({
 	  displayName: 'LiLink',
@@ -349,13 +349,13 @@ webpackJsonp([1],{
 
 	var _Actions = __webpack_require__(36);
 
-	var _ExecutionEnvironment = __webpack_require__(65);
+	var _ExecutionEnvironment = __webpack_require__(64);
 
-	var _DOMUtils = __webpack_require__(64);
+	var _DOMUtils = __webpack_require__(63);
 
-	var _DOMStateStorage = __webpack_require__(144);
+	var _DOMStateStorage = __webpack_require__(145);
 
-	var _createDOMHistory = __webpack_require__(145);
+	var _createDOMHistory = __webpack_require__(146);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -588,7 +588,7 @@ webpackJsonp([1],{
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
-	var _useBeforeUnload = __webpack_require__(150);
+	var _useBeforeUnload = __webpack_require__(151);
 
 	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
 
@@ -634,25 +634,25 @@ webpackJsonp([1],{
 
 	exports.createHistory = _createBrowserHistory2['default'];
 
-	var _createHashHistory2 = __webpack_require__(146);
+	var _createHashHistory2 = __webpack_require__(147);
 
 	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
 
 	exports.createHashHistory = _createHashHistory3['default'];
 
-	var _createMemoryHistory2 = __webpack_require__(148);
+	var _createMemoryHistory2 = __webpack_require__(149);
 
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
 	exports.createMemoryHistory = _createMemoryHistory3['default'];
 
-	var _useBasename2 = __webpack_require__(149);
+	var _useBasename2 = __webpack_require__(150);
 
 	var _useBasename3 = _interopRequireDefault(_useBasename2);
 
 	exports.useBasename = _useBasename3['default'];
 
-	var _useBeforeUnload2 = __webpack_require__(150);
+	var _useBeforeUnload2 = __webpack_require__(151);
 
 	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
 
@@ -763,7 +763,7 @@ webpackJsonp([1],{
 	  _createDecoratedClass(Profile2, [{
 	    key: 'fullName',
 	    decorators: [_src.injectProps],
-	    value: function fullName(seperator, _ref2) {
+	    value: function fullName(_ref2, seperator) {
 	      var firstName = _ref2.firstName;
 	      var lastName = _ref2.lastName;
 
@@ -799,7 +799,7 @@ webpackJsonp([1],{
 
 	  _createDecoratedClass(Profile3, [{
 	    key: 'fullName',
-	    value: function fullName(seperator, firstName, lastName) {
+	    value: function fullName(firstName, lastName, seperator) {
 	      return firstName + seperator + lastName;
 	    }
 	  }, {
@@ -813,7 +813,7 @@ webpackJsonp([1],{
 	      return _react2['default'].createElement(
 	        'p',
 	        null,
-	        this.fullName(', ', firstName, lastName),
+	        this.fullName(firstName, lastName, ', '),
 	        ' - ',
 	        email
 	      );
@@ -943,7 +943,7 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
-	              'class Profile extends React.Component {\n  fullName(seperator, firstName, lastName) {\n    return firstName + seperator + lastName;\n  }\n\n  @injectProps\n  render({ firstName, lastName, email }) {\n    return <p>{ this.fullName(\', \', firstName, lastName) } - { email }</p>;\n  }\n}\n\n<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />'
+	              'class Profile extends React.Component {\n  fullName(firstName, lastName, seperator) {\n    return firstName + seperator + lastName;\n  }\n\n  @injectProps\n  render({ firstName, lastName, email }) {\n    return <p>{ this.fullName(firstName, lastName, \', \') } - { email }</p>;\n  }\n}\n\n<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />'
 	            )
 	          )
 	        )
@@ -966,6 +966,8 @@ webpackJsonp([1],{
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -986,16 +988,16 @@ webpackJsonp([1],{
 
 	var _src = __webpack_require__(54);
 
-	var DownloadButton = (function (_React$Component) {
-	  _inherits(DownloadButton, _React$Component);
+	var DownloadButton1 = (function (_React$Component) {
+	  _inherits(DownloadButton1, _React$Component);
 
-	  function DownloadButton() {
-	    _classCallCheck(this, DownloadButton);
+	  function DownloadButton1() {
+	    _classCallCheck(this, DownloadButton1);
 
-	    _get(Object.getPrototypeOf(DownloadButton.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(DownloadButton1.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createDecoratedClass(DownloadButton, [{
+	  _createDecoratedClass(DownloadButton1, [{
 	    key: 'onDownloadClick',
 	    decorators: [_src.killEvent],
 	    value: function onDownloadClick() {
@@ -1012,19 +1014,19 @@ webpackJsonp([1],{
 	    }
 	  }]);
 
-	  return DownloadButton;
+	  return DownloadButton1;
 	})(_react2['default'].Component);
 
-	var App = (function (_React$Component2) {
-	  _inherits(App, _React$Component2);
+	var App1 = (function (_React$Component2) {
+	  _inherits(App1, _React$Component2);
 
-	  function App() {
-	    _classCallCheck(this, App);
+	  function App1() {
+	    _classCallCheck(this, App1);
 
-	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(App1.prototype), 'constructor', this).apply(this, arguments);
 	  }
 
-	  _createDecoratedClass(App, [{
+	  _createDecoratedClass(App1, [{
 	    key: 'onDownloadClick',
 
 	    /*eslint-disable */
@@ -1051,12 +1053,70 @@ webpackJsonp([1],{
 	          null,
 	          'Notice that your browser\'s url is not being updated with a\'s href "#" in it.'
 	        ),
-	        _react2['default'].createElement(DownloadButton, { onDownloadClick: this.onDownloadClick })
+	        _react2['default'].createElement(DownloadButton1, { onDownloadClick: this.onDownloadClick })
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return App1;
+	})(_react2['default'].Component);
+
+	var DownloadButton2 = function DownloadButton2(_ref) {
+	  var onDownloadClick = _ref.onDownloadClick;
+	  return _react2['default'].createElement(
+	    'button',
+	    { onClick: (0, _src.killEvent)(function () {
+	        return onDownloadClick();
+	      }) },
+	    'click me'
+	  );
+	};
+
+	var App2 = (function (_React$Component3) {
+	  _inherits(App2, _React$Component3);
+
+	  function App2() {
+	    _classCallCheck(this, App2);
+
+	    _get(Object.getPrototypeOf(App2.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(App2, [{
+	    key: 'onDownloadClick',
+
+	    /*eslint-disable */
+	    value: function onDownloadClick() {
+	      alert('DownloadButton as been clicked!');
+	    }
+	  }, {
+	    key: 'onLinkClick',
+	    value: function onLinkClick() {
+	      alert('Link as been clicked!');
+	    }
+
+	    /*eslint-enable */
+
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this = this;
+
+	      return _react2['default'].createElement(
+	        'a',
+	        { href: '#', onClick: (0, _src.killEvent)(function () {
+	            return _this.onLinkClick();
+	          }) },
+	        _react2['default'].createElement(
+	          'span',
+	          null,
+	          'Notice that your browser\'s url is not being updated with a\'s href "#" in it.'
+	        ),
+	        _react2['default'].createElement(DownloadButton2, { onDownloadClick: this.onDownloadClick })
+	      );
+	    }
+	  }]);
+
+	  return App2;
 	})(_react2['default'].Component);
 
 	var killEventExample = _react2['default'].createClass({
@@ -1094,7 +1154,7 @@ webpackJsonp([1],{
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            _react2['default'].createElement(App, null)
+	            _react2['default'].createElement(App1, null)
 	          ),
 	          _react2['default'].createElement(
 	            'div',
@@ -1107,7 +1167,43 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
-	              'class DownloadButton extends React.Component {\n  @killEvent\n  onDownloadClick() { this.props.onDownloadClick(); }\n\n  render() {\n    return <button onClick={ this.onDownloadClick.bind(this) }>click me</button>;\n  }\n}\n\nclass App extends React.Component {\n  onDownloadClick() { alert(\'DownloadButton as been clicked!\'); }\n\n  @killEvent\n  onLinkClick() { alert(\'Link as been clicked!\'); }\n\n  render() {\n    return (\n      <a href="#" onClick={ this.onLinkClick }>\n        <span>Notice that your browser\'s URL is not being updated with "#" in it.</span>\n        <DownloadButton onDownloadClick={ this.onDownloadClick } />\n      </a>\n    );\n  }\n}'
+	              'class DownloadButton extends React.Component {\n  @killEvent\n  onDownloadClick() { this.props.onDownloadClick(); }\n  render() {\n    return <button onClick={ this.onDownloadClick.bind(this) }>click me</button>;\n  }\n}\nclass App extends React.Component {\n  onDownloadClick() { alert(\'DownloadButton as been clicked!\'); }\n  @killEvent\n  onLinkClick() { alert(\'Link as been clicked!\'); }\n  render() {\n    return (\n      <a href="#" onClick={ this.onLinkClick }>\n        <span>Notice that your browser\'s URL is not being updated with "#" in it.</span>\n        <DownloadButton onDownloadClick={ this.onDownloadClick } />\n      </a>\n    );\n  }\n}'
+	            )
+	          )
+	        )
+	      ),
+	      _react2['default'].createElement(
+	        'section',
+	        null,
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'panel panel-default' },
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-heading' },
+	            _react2['default'].createElement(
+	              'h3',
+	              { className: 'panel-title' },
+	              'You can use it like a normall function too'
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-body' },
+	            _react2['default'].createElement(App2, null)
+	          ),
+	          _react2['default'].createElement(
+	            'div',
+	            { className: 'panel-footer' },
+	            _react2['default'].createElement(
+	              'span',
+	              { className: 'label label-default' },
+	              'Code:'
+	            ),
+	            _react2['default'].createElement(
+	              _Prism2['default'],
+	              { className: 'language-jsx' },
+	              'const DownloadButton = ({ onDownloadClick }) => (\n  <button onClick={ killEvent(() => onDownloadClick()) }>click me</button>;\n);\nclass App extends React.Component {\n  onDownloadClick() { alert(\'DownloadButton as been clicked!\'); }\n  onLinkClick() { alert(\'Link as been clicked!\'); }\n  render() {\n    return (\n      <a href="#" onClick={ killEvent(() => this.onLinkClick()) }>\n        <span>Notice that your browser\'s URL is not being updated with "#" in it.</span>\n        <DownloadButton onDownloadClick={ this.onDownloadClick } />\n      </a>\n    );\n  }\n}'
 	            )
 	          )
 	        )
@@ -1136,11 +1232,11 @@ webpackJsonp([1],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LiLink = __webpack_require__(204);
+	var _LiLink = __webpack_require__(205);
 
 	var _LiLink2 = _interopRequireDefault(_LiLink);
 
-	var _reactRouter = __webpack_require__(72);
+	var _reactRouter = __webpack_require__(71);
 
 	var ApiDocs = _react2['default'].createClass({
 	  displayName: 'ApiDocs',
@@ -1488,11 +1584,11 @@ webpackJsonp([1],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _LiLink = __webpack_require__(204);
+	var _LiLink = __webpack_require__(205);
 
 	var _LiLink2 = _interopRequireDefault(_LiLink);
 
-	var _stylesStyleCss = __webpack_require__(137);
+	var _stylesStyleCss = __webpack_require__(138);
 
 	var _stylesStyleCss2 = _interopRequireDefault(_stylesStyleCss);
 
@@ -1647,7 +1743,7 @@ webpackJsonp([1],{
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
-	var _stylesStyleCss = __webpack_require__(137);
+	var _stylesStyleCss = __webpack_require__(138);
 
 	var _stylesStyleCss2 = _interopRequireDefault(_stylesStyleCss);
 
@@ -1831,7 +1927,7 @@ webpackJsonp([1],{
 	      args[_key] = arguments[_key];
 	    }
 
-	    return oldFunction.bind(this).apply(undefined, args.concat([this.props]));
+	    return oldFunction.bind(this).apply(undefined, [this.props].concat(args));
 	  };
 
 	  return descriptor;
@@ -1857,15 +1953,11 @@ webpackJsonp([1],{
 	function killEvent(target, name, descriptor) {
 	  var oldHandler = target;
 
-	  function eventCanceler() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	  function eventCanceler(event) {
+	    event.stopPropagation();
+	    event.preventDefault();
 
-	    args[0].stopPropagation();
-	    args[0].preventDefault();
-
-	    oldHandler.apply(this, args);
+	    oldHandler.apply(this, arguments);
 	  }
 
 	  if (typeof target === 'function') {

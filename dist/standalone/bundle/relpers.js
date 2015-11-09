@@ -36,15 +36,11 @@ webpackJsonp([0],[
 	function killEvent(target, name, descriptor) {
 	  var oldHandler = target;
 
-	  function eventCanceler() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	  function eventCanceler(event) {
+	    event.stopPropagation();
+	    event.preventDefault();
 
-	    args[0].stopPropagation();
-	    args[0].preventDefault();
-
-	    oldHandler.apply(this, args);
+	    oldHandler.apply(this, arguments);
 	  }
 
 	  if (typeof target === 'function') {
@@ -77,7 +73,7 @@ webpackJsonp([0],[
 	      args[_key] = arguments[_key];
 	    }
 
-	    return oldFunction.bind(this).apply(undefined, args.concat([this.props]));
+	    return oldFunction.bind(this).apply(undefined, [this.props].concat(args));
 	  };
 
 	  return descriptor;

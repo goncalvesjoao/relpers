@@ -6,15 +6,11 @@ Object.defineProperty(exports, '__esModule', {
 function killEvent(target, name, descriptor) {
   var oldHandler = target;
 
-  function eventCanceler() {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+  function eventCanceler(event) {
+    event.stopPropagation();
+    event.preventDefault();
 
-    args[0].stopPropagation();
-    args[0].preventDefault();
-
-    oldHandler.apply(this, args);
+    oldHandler.apply(this, arguments);
   }
 
   if (typeof target === 'function') {

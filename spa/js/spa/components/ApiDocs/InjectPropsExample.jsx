@@ -11,7 +11,7 @@ class Profile1 extends React.Component {
 
 class Profile2 extends React.Component {
   @injectProps
-  fullName(seperator, { firstName, lastName }) {
+  fullName({ firstName, lastName }, seperator) {
     return lastName + seperator + firstName;
   }
 
@@ -22,13 +22,13 @@ class Profile2 extends React.Component {
 }
 
 class Profile3 extends React.Component {
-  fullName(seperator, firstName, lastName) {
+  fullName(firstName, lastName, seperator) {
     return firstName + seperator + lastName;
   }
 
   @injectProps
   render({ firstName, lastName, email }) {
-    return <p>{ this.fullName(', ', firstName, lastName) } - { email }</p>;
+    return <p>{ this.fullName(firstName, lastName, ', ') } - { email }</p>;
   }
 }
 
@@ -120,13 +120,13 @@ const InjectPropsExample = React.createClass({
               <Prism className='language-jsx'>
                 {
                   `class Profile extends React.Component {
-  fullName(seperator, firstName, lastName) {
+  fullName(firstName, lastName, seperator) {
     return firstName + seperator + lastName;
   }
 
   @injectProps
   render({ firstName, lastName, email }) {
-    return <p>{ this.fullName(', ', firstName, lastName) } - { email }</p>;
+    return <p>{ this.fullName(firstName, lastName, ', ') } - { email }</p>;
   }
 }
 

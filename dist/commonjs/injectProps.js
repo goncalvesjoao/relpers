@@ -11,7 +11,7 @@ function injectProps(target, name, descriptor) {
       args[_key] = arguments[_key];
     }
 
-    return oldFunction.bind(this).apply(undefined, args.concat([this.props]));
+    return oldFunction.bind(this).apply(undefined, [this.props].concat(args));
   };
 
   return descriptor;
