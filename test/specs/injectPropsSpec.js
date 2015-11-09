@@ -19,7 +19,7 @@ describe('injectProps', () => {
   context('when the target does need arguments', () => {
     class Profile extends React.Component {
       @injectProps
-      fullName(title, { firstName, lastName }) {
+      fullName({ firstName, lastName }, title) {
         return <p>{ title } { firstName } { lastName }</p>;
       }
       render() {
@@ -27,7 +27,7 @@ describe('injectProps', () => {
       }
     }
 
-    it('this.props should be passed as the last argument', () => {
+    it('this.props should be passed as 1st argument', () => {
       const profile = testTree(<Profile firstName="John" lastName="Snow"/>);
 
       expect(profile.innerText).to.equal('Knight John Snow');
