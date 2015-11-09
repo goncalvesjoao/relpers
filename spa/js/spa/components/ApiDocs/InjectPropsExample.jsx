@@ -89,7 +89,7 @@ const InjectPropsExample = React.createClass({
                 {
                   `class Profile extends React.Component {
   @injectProps
-  fullName(seperator, { firstName, lastName }) {
+  fullName({ firstName, lastName }, seperator) {
     return firstName + seperator + lastName;
   }
 

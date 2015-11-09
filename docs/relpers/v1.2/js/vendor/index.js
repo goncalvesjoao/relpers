@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "js/" + chunkId + "1447071444324-chunk.js";
+/******/ 			script.src = __webpack_require__.p + "js/" + chunkId + "1447072747353-chunk.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -88,7 +88,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/relpers/v1.1/";
+/******/ 	__webpack_require__.p = "/relpers/v1.2/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);

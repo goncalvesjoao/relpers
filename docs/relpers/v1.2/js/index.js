@@ -907,7 +907,7 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
-	              'class Profile extends React.Component {\n  @injectProps\n  fullName(seperator, { firstName, lastName }) {\n    return firstName + seperator + lastName;\n  }\n\n  @injectProps\n  render({ email }) {\n    return <p>{ this.fullName(\', \') } - { email }</p>;\n  }\n}\n\n<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />'
+	              'class Profile extends React.Component {\n  @injectProps\n  fullName({ firstName, lastName }, seperator) {\n    return firstName + seperator + lastName;\n  }\n\n  @injectProps\n  render({ email }) {\n    return <p>{ this.fullName(\', \') } - { email }</p>;\n  }\n}\n\n<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />'
 	            )
 	          )
 	        )
