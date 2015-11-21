@@ -1,11 +1,11 @@
 {
   "name": "relpers",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A group of small React Helpers to reduce your React boilerplate.",
-  "author": "linkedcare",
+  "author": "goncalvesjoao",
   "repository": {
     "type": "git",
-    "url": "https://github.com/croudcare/relpers"
+    "url": "https://github.com/goncalvesjoao/relpers"
   },
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -51,6 +51,6 @@
     "mockery": "1.4.0",
     "sinon-chai": "2.8.0",
     "babel-istanbul": "0.3.20",
-    "react-addons-test-utils": "0.14.0"
+    "react-addons-test-utils": "0.14.3"
   }
 }

@@ -81,14 +81,18 @@ const killEventExample = React.createClass({
                   `class DownloadButton extends React.Component {
   @killEvent
   onDownloadClick() { this.props.onDownloadClick(); }
+
   render() {
     return <button onClick={ this.onDownloadClick.bind(this) }>click me</button>;
   }
 }
+
 class App extends React.Component {
   onDownloadClick() { alert('DownloadButton as been clicked!'); }
+
   @killEvent
   onLinkClick() { alert('Link as been clicked!'); }
+
   render() {
     return (
       <a href="#" onClick={ this.onLinkClick }>
@@ -120,9 +124,12 @@ class App extends React.Component {
                   `const DownloadButton = ({ onDownloadClick }) => (
   <button onClick={ killEvent(() => onDownloadClick()) }>click me</button>;
 );
+
 class App extends React.Component {
   onDownloadClick() { alert('DownloadButton as been clicked!'); }
+
   onLinkClick() { alert('Link as been clicked!'); }
+
   render() {
     return (
       <a href="#" onClick={ killEvent(() => this.onLinkClick()) }>

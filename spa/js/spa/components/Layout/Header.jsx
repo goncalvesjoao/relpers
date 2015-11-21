@@ -1,8 +1,8 @@
 import React from 'react';
-import LiLink from '../../LiLink';
-import styles from '../../../styles/style.css';
+import LiLink from '../LiLink';
+import styles from '../../styles/style.css';
 import CSSModules from 'react-css-modules';
-import { config } from '../../../../../../src';
+import { config } from '../../../../../src';
 
 @CSSModules(styles)
 class Header extends React.Component {
@@ -28,33 +28,17 @@ class Header extends React.Component {
             </ul>
 
             <ul className="nav navbar-nav navbar-right">
-              <li>{ this.repositoryLink() }</li>
+              <li>
+                <a target="_blank" href={ config.repository.url }>
+                  <img styleName="github_icon" src="imgs/github.png" />
+                  GitHub
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
       </nav>
     );
-  }
-
-  repositoryLink() {
-    const props = { href: '' };
-
-    if (config.repository) { props.href = config.repository.url; }
-
-    if (props.href) {
-      props.target = '_blank';
-    } else {
-      props.href = '#';
-      props.onClick = (event) => {
-        event.preventDefault();
-
-        /*eslint-disable */
-        alert('You might want to fill in the blanks of your repository details listed on the package.json');
-        /*eslint-enable */
-      };
-    }
-
-    return <a { ...props }><img styleName="github_icon" src="imgs/github.png" /> GitHub</a>;
   }
 
 }

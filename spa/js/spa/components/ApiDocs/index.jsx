@@ -6,6 +6,31 @@ const ApiDocs = React.createClass({
 
   mixins: [History],
 
+  renderHome() {
+    return (
+      <div className="jumbotron">
+        <h1>Relpers API</h1>
+        <h2 className="lead">
+          Relpers exports an object as its default export, the sidebar on the left ilustrates that object's keys.
+        </h2>
+      </div>
+    );
+  },
+
+  renderSidebar() {
+    return (
+      <ul className="ascii fixed">
+        <li>
+          <span>Relpers</span>
+          <ul>
+            <LiLink to="/api_docs/kill_event">killEvent</LiLink>
+            <LiLink to="/api_docs/inject_props">injectProps</LiLink>
+          </ul>
+        </li>
+      </ul>
+    );
+  },
+
   render() {
     return (
       <div id="top">
@@ -24,34 +49,6 @@ const ApiDocs = React.createClass({
         </div>
 
       </div>
-    );
-  },
-
-  renderHome() {
-    return (
-      <div className="jumbotron">
-        <h1>Relpers API</h1>
-        <h2 className="lead">
-          This API documentation example page,
-          ilustrates how you can take advantage of this Single Page App
-          created for you to test your React Component and
-          actually use it to document your work and publish it on the Web.
-        </h2>
-      </div>
-    );
-  },
-
-  renderSidebar() {
-    return (
-      <ul className="ascii fixed">
-        <li>
-          <span>Relpers</span>
-          <ul>
-            <LiLink to="/api_docs/kill_event">killEvent</LiLink>
-            <LiLink to="/api_docs/inject_props">injectProps</LiLink>
-          </ul>
-        </li>
-      </ul>
     );
   },
 
