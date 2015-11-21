@@ -10,9 +10,9 @@ describe('injectProps', () => {
     }
 
     it('this.props should be passed as 1st argument', () => {
-      const profile = testTree(<Profile firstName="John" lastName="Snow"/>);
+      const $profile = $(<Profile firstName="John" lastName="Snow"/>).render();
 
-      expect(profile.innerText).to.equal('John Snow');
+      expect($profile.text()).to.equal('John Snow');
     });
   });
 
@@ -28,9 +28,9 @@ describe('injectProps', () => {
     }
 
     it('this.props should be passed as 1st argument', () => {
-      const profile = testTree(<Profile firstName="John" lastName="Snow"/>);
+      const $profile = $(<Profile firstName="John" lastName="Snow"/>).render();
 
-      expect(profile.innerText).to.equal('Knight John Snow');
+      expect($profile.text()).to.equal('Knight John Snow');
     });
   });
 });

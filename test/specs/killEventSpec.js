@@ -18,27 +18,27 @@ describe('killEvent', () => {
       render() {
         return (
           <div onClick={ this.onDivClick.bind(this) }>
-            <button ref="button1" onClick={ this.onButton1Click.bind(this) }>button1</button>
-            <button ref="button2" onClick={ this.onButton2Click.bind(this) }>button2</button>
+            <button id="button1" onClick={ this.onButton1Click.bind(this) }>button1</button>
+            <button id="button2" onClick={ this.onButton2Click.bind(this) }>button2</button>
           </div>
         );
       }
     }
 
     it('button2 should not let div click to be triggered', () => {
-      const buttons = testTree(<Buttons />);
+      const $buttons = $(<Buttons />).render();
 
-      buttons.get('button2').click();
+      $buttons.find('[id="button2"]').trigger('click');
 
-      expect(buttons.state).to.deep.equal({ divClicked: false, button1Clicked: false, button2Clicked: true });
+      expect($buttons.unwrap().state).to.deep.equal({ divClicked: false, button1Clicked: false, button2Clicked: true });
     });
 
     it('button1 should let div click to be triggered', () => {
-      const buttons = testTree(<Buttons />);
+      const $buttons = $(<Buttons />).render();
 
-      buttons.get('button1').click();
+      $buttons.find('[id="button1"]').trigger('click');
 
-      expect(buttons.state).to.deep.equal({ divClicked: true, button1Clicked: true, button2Clicked: false });
+      expect($buttons.unwrap().state).to.deep.equal({ divClicked: true, button1Clicked: true, button2Clicked: false });
     });
   });
 
@@ -58,27 +58,27 @@ describe('killEvent', () => {
       render() {
         return (
           <div onClick={ this.onDivClick.bind(this) }>
-            <button ref="button1" onClick={ this.onButton1Click.bind(this) }>button1</button>
-            <button ref="button2" onClick={ killEvent(() => this.onButton2Click()) }>button2</button>
+            <button id="button1" onClick={ this.onButton1Click.bind(this) }>button1</button>
+            <button id="button2" onClick={ killEvent(() => this.onButton2Click()) }>button2</button>
           </div>
         );
       }
     }
 
     it('button2 should not let div click to be triggered', () => {
-      const buttons = testTree(<Buttons />);
+      const $buttons = $(<Buttons />).render();
 
-      buttons.get('button2').click();
+      $buttons.find('[id="button2"]').trigger('click');
 
-      expect(buttons.state).to.deep.equal({ divClicked: false, button1Clicked: false, button2Clicked: true });
+      expect($buttons.unwrap().state).to.deep.equal({ divClicked: false, button1Clicked: false, button2Clicked: true });
     });
 
     it('button1 should let div click to be triggered', () => {
-      const buttons = testTree(<Buttons />);
+      const $buttons = $(<Buttons />).render();
 
-      buttons.get('button1').click();
+      $buttons.find('[id="button1"]').trigger('click');
 
-      expect(buttons.state).to.deep.equal({ divClicked: true, button1Clicked: true, button2Clicked: false });
+      expect($buttons.unwrap().state).to.deep.equal({ divClicked: true, button1Clicked: true, button2Clicked: false });
     });
   });
 });

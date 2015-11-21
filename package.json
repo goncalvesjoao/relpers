@@ -49,6 +49,7 @@
     "mocha": "2.3.3",
     "sinon": "1.17.1",
     "mockery": "1.4.0",
+    "teaspoon": "5.0.1",
     "sinon-chai": "2.8.0",
     "babel-istanbul": "0.3.20",
     "react-addons-test-utils": "0.14.3"
