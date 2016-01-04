@@ -24,6 +24,7 @@ const ApiDocs = React.createClass({
           <span>Relpers</span>
           <ul>
             <LiLink to="/api_docs/kill_event">killEvent</LiLink>
+            <LiLink to="/api_docs/apply_mixin">applyMixin</LiLink>
             <LiLink to="/api_docs/inject_props">injectProps</LiLink>
           </ul>
         </li>
