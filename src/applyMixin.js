@@ -7,14 +7,14 @@ function applyMixinBuilder(...mixins) {
     // and return the mixed class
     return Object.keys(mixin)
       .reduce((targetClass, key) => {
-        // get the value
-        const value = mixin[key];
-
         // if the target class has the prop or method
         if (targetClass[key] || targetClass.prototype[key]) {
           // return it untouched
           return targetClass;
         }
+
+        // get the value
+        const value = mixin[key];
 
         // if the value is a functoin
         if (typeof value === 'function') {
