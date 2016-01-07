@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import ApiDocs from './components/ApiDocs';
 import NotFound from './components/NotFound';
 import KillEventExample from './components/ApiDocs/KillEventExample';
+import ApplyMixinExample from './components/ApiDocs/ApplyMixinExample';
 import InjectPropsExample from './components/ApiDocs/InjectPropsExample';
 
 const routes = {
@@ -19,6 +20,10 @@ const routes = {
         {
           path: 'kill_event',
           component: KillEventExample,
+        },
+        {
+          path: 'apply_mixin',
+          component: ApplyMixinExample,
         },
         {
           path: 'inject_props',
