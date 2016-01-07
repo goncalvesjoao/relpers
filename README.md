@@ -70,6 +70,49 @@ class App2 extends React.Component {
 }
 ```
 
+applyMixin
+----
+thanks [@sergiodxa](https://github.com/sergiodxa)
+```javascript
+import { History } from 'react-router';
+import { applyMixin } from 'relpers';
+
+@applyMixin(History)
+class Link extends React.Component {
+  onLinkClick(href) {
+    this.history.pushState(null, href);
+  }
+
+  render() {
+    return (
+      <button onClick={ () => this.onLinkClick(this.props.href) }>
+        { this.props.children }
+      </button>
+    );
+  }
+}
+```
+applies mixins to your Component without the need to use React.createClass like the example below:
+```javascript
+import { History } from 'react-router';
+
+const Link = React.createClass({
+  mixins: [History],
+
+  onLinkClick(href) {
+    this.history.pushState(null, href);
+  },
+
+  render() {
+    return (
+      <button onClick={ () => this.onLinkClick(this.props.href) }>
+        { this.props.children }
+      </button>
+    );
+  },
+});
+```
+
 ---
 
 ## Notes:
