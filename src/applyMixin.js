@@ -24,10 +24,26 @@ if (typeof Object.assign != 'function') {
   })();
 }
 
+/*
+ * Apply mixin (POJO) to ES6 class
+ * @param target {Class} - The class to decorate
+ * @param mixin {Object} - The object mixin to apply
+ * @return {Class} - Decorated class
+ */
 function applyMixin(target, mixin) {
   // apply mixin to the target class
   // and return the mixed class
   return Object.keys(mixin).reduce((targetClass, key) => {
+    // if the key is contextTypes
+    if (key === 'contextTypes') {
+      // merge the target and mixin contextTypes
+      const value = Object.assign({}, targetClass[key], mixin[key]);
+      // apply it
+      targetClass[key] = value;
+      // return the target class
+      return targetClass;
+    }
+
     // if the target class has the prop or method
     if (targetClass[key] || targetClass.prototype[key]) {
       // return it untouched
@@ -54,6 +70,11 @@ function applyMixin(target, mixin) {
   }, target);
 }
 
+/*
+ * Apply one or more mixins (POJOs) to a ES6 class
+ * @param mixins {Array} - List of mixins to apply
+ * @return {Function} - Function to apply the list of mixins
+ */
 function applyMixinBuilder(...mixins) {
   return target => mixins.reduce(applyMixin, target);
 }
