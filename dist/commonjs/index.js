@@ -14,8 +14,13 @@ var _injectProps = require('./injectProps');
 
 var _injectProps2 = _interopRequireDefault(_injectProps);
 
+var _applyMixin = require('./applyMixin');
+
+var _applyMixin2 = _interopRequireDefault(_applyMixin);
+
 exports['default'] = {
   killEvent: _killEvent2['default'],
-  injectProps: _injectProps2['default']
+  injectProps: _injectProps2['default'],
+  applyMixin: _applyMixin2['default']
 };
 module.exports = exports['default'];
