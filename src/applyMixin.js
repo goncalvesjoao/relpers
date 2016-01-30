@@ -11,7 +11,7 @@ function applyMixin(target, mixin) {
     // if the key is contextTypes
     if (key === 'contextTypes') {
       // merge the target and mixin contextTypes
-      const value = Object.assign({}, mixin[key], targetClass[key]);
+      const value = { ...mixin[key], ...targetClass[key] };
       // apply it
       targetClass[key] = value;
       // return the target class
