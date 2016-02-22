@@ -30,7 +30,6 @@
     "iit": true,
     "beforeEach": true,
     "afterEach": true,
-    "expect": true,
     "pending": true,
     "spyOn": true,
     "context": true,

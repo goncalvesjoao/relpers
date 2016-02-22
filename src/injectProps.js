@@ -12,7 +12,7 @@ function injectProps(propertyNames, target, name, descriptor) {
       const newArgs = properties.concat(args);
 
       return originalFunction.apply(this, newArgs);
-    }
+    },
   };
 }
 

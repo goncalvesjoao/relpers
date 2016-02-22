@@ -10,14 +10,18 @@ class Profile1 extends React.Component {
 }
 
 class Profile2 extends React.Component {
-  @injectProps
-  fullName({ firstName, lastName }, seperator) {
-    return lastName + seperator + firstName;
+  constructor() {
+    super();
+    this.state = { firstName: 'John', lastName: 'Snow' };
   }
 
-  @injectProps
-  render({ email }) {
-    return <p>{ this.fullName(', ') } - { email }</p>;
+  @injectProps('state', 'props')
+  fullName({ firstName, lastName }, { email }, seperator) {
+    return firstName + seperator + lastName + ' - ' + email;
+  }
+
+  render() {
+    return <p>{ this.fullName(', ') }</p>;
   }
 }
 
@@ -76,11 +80,11 @@ const InjectPropsExample = React.createClass({
         <section>
           <div className='panel panel-default'>
             <div className='panel-heading'>
-              <h3 className='panel-title'>Works also, with methods that receive arguments</h3>
+              <h3 className='panel-title'>Works with methods that receive arguments and you can chose which properties you want to inject</h3>
             </div>
 
             <div className='panel-body'>
-              <Profile2 firstName="John" lastName="Snow" email="john.snow@gmail.com" />
+              <Profile2 email="john.snow@gmail.com" />
             </div>
 
             <div className='panel-footer'>
@@ -88,18 +92,21 @@ const InjectPropsExample = React.createClass({
               <Prism className='language-jsx'>
                 {
                   `class Profile extends React.Component {
-  @injectProps
-  fullName({ firstName, lastName }, seperator) {
-    return firstName + seperator + lastName;
+  constructor() {
+    this.state = { firstName: 'John', lastName: 'Snow' }
   }
 
-  @injectProps
-  render({ email }) {
-    return <p>{ this.fullName(', ') } - { email }</p>;
+  @injectProps('state', 'props')
+  fullName({ firstName, lastName }, { email }, seperator) {
+    return firstName + seperator + lastName + ' - ' + email;
+  }
+
+  render() {
+    return <p>{ this.fullName(', ') }</p>;
   }
 }
 
-<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />` }
+<Profile email="john.snow@gmail.com" />` }
               </Prism>
             </div>
           </div>

@@ -1040,30 +1040,27 @@ webpackJsonp([1],{
 	  function Profile2() {
 	    _classCallCheck(this, Profile2);
 
-	    _get(Object.getPrototypeOf(Profile2.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(Profile2.prototype), 'constructor', this).call(this);
+	    this.state = { firstName: 'John', lastName: 'Snow' };
 	  }
 
 	  _createDecoratedClass(Profile2, [{
 	    key: 'fullName',
-	    decorators: [_src.injectProps],
-	    value: function fullName(_ref2, seperator) {
+	    decorators: [(0, _src.injectProps)('state', 'props')],
+	    value: function fullName(_ref2, _ref3, seperator) {
 	      var firstName = _ref2.firstName;
 	      var lastName = _ref2.lastName;
+	      var email = _ref3.email;
 
-	      return lastName + seperator + firstName;
+	      return firstName + seperator + lastName + ' - ' + email;
 	    }
 	  }, {
 	    key: 'render',
-	    decorators: [_src.injectProps],
-	    value: function render(_ref3) {
-	      var email = _ref3.email;
-
+	    value: function render() {
 	      return _react2['default'].createElement(
 	        'p',
 	        null,
-	        this.fullName(', '),
-	        ' - ',
-	        email
+	        this.fullName(', ')
 	      );
 	    }
 	  }]);
@@ -1171,13 +1168,13 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              'h3',
 	              { className: 'panel-title' },
-	              'Works also, with methods that receive arguments'
+	              'Works with methods that receive arguments and you can chose which properties you want to inject'
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            _react2['default'].createElement(Profile2, { firstName: 'John', lastName: 'Snow', email: 'john.snow@gmail.com' })
+	            _react2['default'].createElement(Profile2, { email: 'john.snow@gmail.com' })
 	          ),
 	          _react2['default'].createElement(
 	            'div',
@@ -1190,7 +1187,7 @@ webpackJsonp([1],{
 	            _react2['default'].createElement(
 	              _Prism2['default'],
 	              { className: 'language-jsx' },
-	              'class Profile extends React.Component {\n  @injectProps\n  fullName({ firstName, lastName }, seperator) {\n    return firstName + seperator + lastName;\n  }\n\n  @injectProps\n  render({ email }) {\n    return <p>{ this.fullName(\', \') } - { email }</p>;\n  }\n}\n\n<Profile firstName="John" lastName="Snow" email="john.snow@gmail.com" />'
+	              'class Profile extends React.Component {\n  constructor() {\n    this.state = { firstName: \'John\', lastName: \'Snow\' }\n  }\n\n  @injectProps(\'state\', \'props\')\n  fullName({ firstName, lastName }, { email }, seperator) {\n    return firstName + seperator + lastName + \' - \' + email;\n  }\n\n  render() {\n    return <p>{ this.fullName(\', \') }</p>;\n  }\n}\n\n<Profile email="john.snow@gmail.com" />'
 	            )
 	          )
 	        )
@@ -2131,15 +2128,34 @@ webpackJsonp([1],{
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
+	/*
+	 * Apply mixin (POJO) to ES6 class
+	 * @param target {Class} - The class to decorate
+	 * @param mixin {Object} - The object mixin to apply
+	 * @return {Class} - Decorated class
+	 */
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	function applyMixin(target, mixin) {
 	  // apply mixin to the target class
 	  // and return the mixed class
 	  return Object.keys(mixin).reduce(function (targetClass, key) {
+	    // if the key is contextTypes
+	    if (key === 'contextTypes') {
+	      // merge the target and mixin contextTypes
+	      var _value = _extends({}, mixin[key], targetClass[key]);
+	      // apply it
+	      targetClass[key] = _value;
+	      // return the target class
+	      return targetClass;
+	    }
+
 	    // if the target class has the prop or method
 	    if (targetClass[key] || targetClass.prototype[key]) {
 	      // return it untouched
@@ -2166,6 +2182,11 @@ webpackJsonp([1],{
 	  }, target);
 	}
 
+	/*
+	 * Apply one or more mixins (POJOs) to a ES6 class
+	 * @param mixins {Array} - List of mixins to apply
+	 * @return {Function} - Function to apply the list of mixins
+	 */
 	function applyMixinBuilder() {
 	  for (var _len = arguments.length, mixins = Array(_len), _key = 0; _key < _len; _key++) {
 	    mixins[_key] = arguments[_key];
@@ -2188,27 +2209,50 @@ webpackJsonp([1],{
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
-	"use strict";
+	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
-	function injectProps(target, name, descriptor) {
-	  var oldFunction = descriptor.value;
 
-	  descriptor.value = function propsInjectorFunction() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function injectProps(propertyNames, target, name, descriptor) {
+	  var originalFunction = descriptor.value;
+
+	  if (typeof originalFunction !== 'function') {
+	    throw new SyntaxError('@injectProps can only be used on functions, not: ' + originalFunction);
+	  }
+
+	  return _extends({}, descriptor, {
+	    value: function propsInjectorWrapper() {
+	      var _this = this;
+
+	      var properties = propertyNames.map(function (propertyName) {
+	        return _this[propertyName];
+	      });
+
+	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	        args[_key] = arguments[_key];
+	      }
+
+	      var newArgs = properties.concat(args);
+
+	      return originalFunction.apply(this, newArgs);
 	    }
-
-	    return oldFunction.bind(this).apply(undefined, [this.props].concat(args));
-	  };
-
-	  return descriptor;
+	  });
 	}
 
-	exports["default"] = injectProps;
-	module.exports = exports["default"];
+	function applyInjectProps() {
+	  for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	    args[_key2] = arguments[_key2];
+	  }
+
+	  return typeof args[0] === 'object' ? injectProps.apply(undefined, [['props']].concat(args)) : injectProps.bind(null, args);
+	}
+
+	exports['default'] = applyInjectProps;
+	module.exports = exports['default'];
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/Users/goncalvesjoao/react-projects/relpers/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "injectProps.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
