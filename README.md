@@ -9,8 +9,12 @@ Documentation: https://goncalvesjoao.github.io/relpers/
 
 ---
 
-injectProps
-----
+## @injectProps
+
+Injects the selected properties (of the class instance) before the target method's parameters.
+
+If no property is selected, defaults to 'props'.
+
 ```javascript
 import { injectProps } from 'relpers';
 
@@ -26,7 +30,7 @@ or
 import { injectProps } from 'relpers';
 
 class Profile extends React.Component {
-  @injectProps
+  @injectProps('state')
   fullName({ firstName, lastName }) {
     return firstName + ' ' + lastName;
   }
@@ -37,8 +41,10 @@ class Profile extends React.Component {
 }
 ```
 
-killEvent
-----
+## @killEvent
+
+Executes **event.stopPropagation()** and **event.preventDefault()** for you.
+
 ```javascript
 import { killEvent } from 'relpers';
 
@@ -70,8 +76,8 @@ class App2 extends React.Component {
 }
 ```
 
-applyMixin
-----
+## @applyMixin
+
 thanks [@sergiodxa](https://github.com/sergiodxa)
 ```javascript
 import { History } from 'react-router';

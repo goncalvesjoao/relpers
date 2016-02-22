@@ -1,11 +1,25 @@
-function injectProps(target, name, descriptor) {
-  const oldFunction = descriptor.value;
+function injectProps(propertyNames, target, name, descriptor) {
+  const originalFunction = descriptor.value;
 
-  descriptor.value = function propsInjectorFunction(...args) {
-    return oldFunction.bind(this)(this.props, ...args);
+  if (typeof originalFunction !== 'function') {
+    throw new SyntaxError(`@injectProps can only be used on functions, not: ${originalFunction}`);
+  }
+
+  return {
+    ...descriptor,
+    value: function propsInjectorWrapper(...args) {
+      const properties = propertyNames.map(propertyName => this[propertyName]);
+      const newArgs = properties.concat(args);
+
+      return originalFunction.apply(this, newArgs);
+    }
   };
-
-  return descriptor;
 }
 
-export default injectProps;
+function applyInjectProps(...args) {
+  return (typeof args[0] === 'object')
+    ? injectProps(['props'], ...args)
+    : injectProps.bind(null, args);
+}
+
+export default applyInjectProps;
